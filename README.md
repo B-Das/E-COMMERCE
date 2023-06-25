@@ -1,4 +1,42 @@
-# Getting Started with Create React App
+# Ecommerce App
+This is an ecommerce website frontend built with React and Redux. It allows users to browse and manage products, add them to the cart, and view the cart items. The website interacts with a dummy ecommerce API service to fetch and update data.
+
+# Features
+* Navbar with cart items count and relevant navigation links
+* All Products page to view, edit, and delete products
+* Sorting functionality to sort products by price
+* Create page to add new products
+* Product Detail page to view product details and add to cart
+* Cart page to view and manage cart items
+* Error and success handling with appropriate alerts/notifications
+
+## Folder Structure
+# src
+
+* [actions/](.\src\actions)
+  * [index.js](.\src\actions\index.js)
+* [apiCall/](.\src\apiCall)
+  * [index.js](.\src\apiCall\index.js)
+* [Component/](.\src\Component)
+  * [AddProduct.js](.\src\Component\AddProduct.js)
+  * [BasicRating.js](.\src\Component\BasicRating.js)
+  * [Cart.js](.\src\Component\Cart.js)
+  * [CartItems.js](.\src\Component\CartItems.js)
+  * [Nav.js](.\src\Component\Nav.js)
+  * [ProductDetail.js](.\src\Component\ProductDetail.js)
+  * [ProductItem.js](.\src\Component\ProductItem.js)
+  * [ProductItemList.js](.\src\Component\ProductItemList.js)
+  * [Sort.js](.\src\Component\Sort.js)
+* [Notification/](.\src\Notification)
+  * [notify.js](.\src\Notification\notify.js)
+* [reducers/](.\src\reducers)
+  * [index.js](.\src\reducers\index.js)
+* [App.js](.\src\App.js)
+* [index.css](.\src\index.css)
+* [index.js](.\src\index.js)
+
+
+## Getting Started with Create React App
 
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
 
