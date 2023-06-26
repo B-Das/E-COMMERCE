@@ -10,27 +10,28 @@ export default function ProductDetail({ item }) {
   const dispatchCart = useDispatch();
   const dispatchTotal = useDispatch();
 
+  // Handle click event when adding item to cart
   function handleClick(item) {
     if (!item.qty) {
       item.qty = 1;
       dispatchCart(addCart(item));
       dispatchTotal(CartItems());
-      showToastMessage("item Added to cart", "success");
+      showToastMessage("Item Added to Cart", "success");
     } else {
       dispatchCart(addCart(item));
       dispatchTotal(CartItems());
-      showToastMessage("item Added to cart", "success");
+      showToastMessage("Item Added to Cart", "success");
     }
   }
+
   return (
-    //   container
     <div className="container-sm d-flex flex-lg-row  flex-column mt-4 gap-5">
-      {/* left side  */}
+      {/* left side */}
       <ToastContainer />
       {item.images ? (
         <div
-          className=" border border-1 "
-          style={{height:"20%", width: "50%", objectFit: "cover" }}
+          className="border border-1"
+          style={{ height: "20%", width: "50%", objectFit: "cover" }}
         >
           <div
             id="carouselExampleDark"
@@ -39,6 +40,7 @@ export default function ProductDetail({ item }) {
             data-bs-ride="carousel"
           >
             <div className="carousel-indicators">
+              {/* Indicators */}
               <button
                 type="button"
                 data-bs-target="#carouselExampleDark"
@@ -61,11 +63,15 @@ export default function ProductDetail({ item }) {
               ></button>
             </div>
             <div className="carousel-inner">
+              {/* Carousel items */}
               {item.images[0] && (
-                <div className="carousel-item active" data-bs-interval="10000">
+                <div
+                  className="carousel-item active"
+                  data-bs-interval="10000"
+                >
                   <img
                     src={item.images[0]}
-                    className="d-block w-100 "
+                    className="d-block w-100"
                     alt="error"
                     style={{ height: "20rem" }}
                   />
@@ -81,7 +87,6 @@ export default function ProductDetail({ item }) {
                   />
                 </div>
               )}
-
               {item.images[2] && (
                 <div className="carousel-item">
                   <img
@@ -93,6 +98,7 @@ export default function ProductDetail({ item }) {
                 </div>
               )}
             </div>
+            {/* Carousel navigation buttons */}
             <button
               className="carousel-control-prev"
               type="button"
@@ -122,17 +128,17 @@ export default function ProductDetail({ item }) {
       ) : (
         <img src={item.thumbnail} alt="error" id="detailAddedImage" />
       )}
-      {/* right side  */}
 
+      {/* right side */}
       <div className="d-flex flex-column gap-3">
         <div className="d-flex flex-column gap-2">
           <span>{item.title}</span>
           <span>
             <BasicRating value={item.rating} />
           </span>
-          <div className="d-flex gap-3 ">
+          <div className="d-flex gap-3">
             <span className="text-success">
-              <span className="text-danger">Price:</span>Rs{item.price}
+              <span className="text-danger">Price:</span> Rs{item.price}
             </span>
             <span className="text-danger">
               Discount:
@@ -142,18 +148,17 @@ export default function ProductDetail({ item }) {
             </span>
           </div>
           <span className="text-danger">
-            Category:<span className="text-success">{item.category}</span>
+            Category:
+            <span className="text-success">{item.category}</span>
           </span>
         </div>
         <div className="d-flex flex-column gap-3">
           <span className="text-danger">
-            {" "}
             Stocks:
             <span className="text-success">{item.stock ? item.stock : ""}</span>
           </span>
           <span>{item.description}</span>
         </div>
-
         <div className="align-self-end">
           <button
             type="button"

@@ -9,6 +9,7 @@ import { ToastContainer } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
 import { showToastMessage } from "../Notification/notify";
 
+// Styled component for the main container
 const Container = styled.div`
   width: 50%;
   margin: auto;
@@ -23,6 +24,7 @@ const Container = styled.div`
   }
 `;
 
+// Styled component for the form
 const Form = styled.form`
   display: flex;
   flex-direction: column;
@@ -30,6 +32,7 @@ const Form = styled.form`
   align-items: flex-start;
 `;
 
+// Styled component for input fields
 const Input = styled.input`
   padding: 0.8rem;
   border: none;
@@ -38,6 +41,7 @@ const Input = styled.input`
   box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
 `;
 
+// Styled component for the submit button
 const SubmitButton = styled.button`
   padding: 0.8rem;
   width: 9rem;
@@ -49,6 +53,7 @@ const SubmitButton = styled.button`
   box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
 `;
 
+// Styled component for the ToastContainer
 const ToastContainerStyled = styled(ToastContainer)`
   bottom: 0;
   right: 0;
@@ -70,6 +75,7 @@ export default function AddProduct() {
   function handleSubmit(e) {
     e.preventDefault();
 
+    // Perform custom fetch with provided URL and request configuration
     let result = customFetch(url, {
       body: {
         id: Date.now(),
@@ -84,13 +90,16 @@ export default function AddProduct() {
       method: "POST",
     });
 
+    // Dispatch action to add the new product to the store
     result.then((data) => {
       dispatch(addproducts([data, ...products]));
       navigate("/");
     });
 
+    // Show success toast message
     showToastMessage("Product Added Successfully", "success");
 
+    // Reset form fields
     setname("");
     setcategory("");
     setdescription("");

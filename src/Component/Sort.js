@@ -3,7 +3,7 @@ import { useDispatch, useSelector } from "react-redux";
 import { addproducts } from "../actions";
 
 export default function Sort() {
-  const [flag, setflag] = useState(false);
+  const [flag, setFlag] = useState(false); // State to track if sorting is applied
   const products = useSelector((state) => state.products);
   const dispatchSort = useDispatch();
   const dispatchCancel = useDispatch();
@@ -11,20 +11,22 @@ export default function Sort() {
   function handleSort() {
     let sortedData = products.sort((a, b) => a.price - b.price);
     dispatchSort(addproducts([...sortedData]));
-    setflag(true);
+    setFlag(true); // Set the sorting flag to true
   }
+
   function cancelSort() {
     let products = JSON.parse(window.localStorage.getItem("products"));
     dispatchCancel(addproducts([...products]));
-    setflag(false);
+    setFlag(false); // Set the sorting flag back to false
   }
+
   return (
     <div className="align-self-end">
       <div
         className="bg-white p-2 rounded-5  d-flex justify-content-around"
         style={style}
       >
-        <span className="fw-bold " onClick={() => handleSort()}>
+        <span className="fw-bold" onClick={() => handleSort()}>
           Sort by Price
         </span>
         {flag && (
@@ -42,6 +44,7 @@ export default function Sort() {
     </div>
   );
 }
+
 const style = {
   width: "9rem",
   cursor: "pointer",

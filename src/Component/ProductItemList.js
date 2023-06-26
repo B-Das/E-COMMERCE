@@ -5,7 +5,9 @@ import Sort from "./Sort";
 
 export default function ProductItemList({}) {
   const data = useSelector((state) => state.products);
-  if (data.length == 0) {
+
+  // Display a loading spinner if the data is not yet available
+  if (data.length === 0) {
     return (
       <div className="d-flex justify-content-center mt-5">
         <div
@@ -21,6 +23,7 @@ export default function ProductItemList({}) {
     return (
       <div className="d-flex flex-column container-sm mt-4">
         <Sort />
+        {/* Render each product item */}
         {data.map((item) => (
           <ProductItem item={item} key={item.title} />
         ))}

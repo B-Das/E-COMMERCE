@@ -27,37 +27,42 @@ export default function ProductItem({ item }) {
     dispatch(ProductToview(item));
     navigate(`/productdetails/${item.id}`);
   }
+
   function handleCart(item) {
     if (addedItem) {
       item.qty = 1;
       dispatchCart(addCart(item));
       dispatchTotal(CartItems());
       setaddedItem(false);
-      showToastMessage("item Added to cart", "success");
+      showToastMessage("Item Added to Cart", "success");
     } else {
       navigate("/cart");
     }
   }
+
   function handleEdit(item) {
     item.edit = false;
     dispatchProduct(addproducts([...products]));
   }
-  // making delete request
-  function handleDelelteProduct(item) {
+
+  // Making delete request
+  function handleDeleteProduct(item) {
     let url = `https://my-json-server.typicode.com/B-Das/jsonData/products/${item.id}`;
     let result = customFetch(url, { method: "DELETE" });
 
     let index = products.indexOf(item);
     products.splice(index, 1);
     dispatchProduct(addproducts([...products]));
-    showToastMessage("item deleted", "warning");
+    showToastMessage("Item deleted", "warning");
   }
-  // closing edit mode
+
+  // Closing edit mode
   function handleCancel(item) {
     item.edit = true;
     dispatchProduct(addproducts([...products]));
   }
-  // making put request after click on save button of edit
+
+  // Making put request after clicking the save button in edit mode
   function handleSave(item) {
     let url = `https://my-json-server.typicode.com/jaiswalaryan/data/products/${item.id}`;
     let result = customFetch(url, {
@@ -76,13 +81,14 @@ export default function ProductItem({ item }) {
       products[index] = data;
 
       dispatchProduct(addproducts([...products]));
-      showToastMessage("Edit suceesful", "success");
+      showToastMessage("Edit successful", "success");
     });
   }
+
   return (
-    //   container
+    // Container
     <div className="d-flex container-sm bg-white px-1 py-5 mt-4 flex-column flex-lg-row gap-3">
-      {/* left section  */}
+      {/* Left section */}
       <ToastContainer />
       <div className="d-flex container-sm gap-5">
         <img
@@ -91,7 +97,7 @@ export default function ProductItem({ item }) {
           width={"200rem"}
           onClick={() => handleClick(item)}
         />
-        {/* right-part Content  */}
+        {/* Right-part Content */}
         <div className="d-flex flex-column gap-2">
           {item.edit ? (
             <span>{item.title}</span>
@@ -130,7 +136,8 @@ export default function ProductItem({ item }) {
           )}
         </div>
       </div>
-      {/* right section  */}
+
+      {/* Right section */}
       <div className="p-2">
         {item.edit ? (
           <span>{item.description}</span>
@@ -146,7 +153,8 @@ export default function ProductItem({ item }) {
           </div>
         )}
       </div>
-      {/* footer section  */}
+
+      {/* Footer section */}
       <div className="align-self-end d-flex align-items-center gap-4 flex-lg-grow-1 p-1">
         {item.edit ? (
           <button
@@ -187,7 +195,7 @@ export default function ProductItem({ item }) {
                 alt="error"
                 width={"30rem"}
                 style={{ cursor: "pointer" }}
-                onClick={() => handleDelelteProduct(item)}
+                onClick={() => handleDeleteProduct(item)}
               />
             </span>
           </>

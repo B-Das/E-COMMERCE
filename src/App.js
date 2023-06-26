@@ -10,6 +10,7 @@ import customFetch from "./apiCall";
 import { useEffect } from "react";
 
 function App() {
+  // Get the product detail item from the state
   let productDetailItem = useSelector((state) => state.itemToDisplay);
 
   const url = "https://my-json-server.typicode.com/B-Das/jsonData/db";
@@ -17,6 +18,7 @@ function App() {
   const dispatch = useDispatch();
 
   useEffect(() => {
+    // Fetch products data from the API and update the state on mount
     let response = customFetch(url, {
       method: "GET",
     });

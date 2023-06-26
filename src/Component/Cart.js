@@ -8,13 +8,15 @@ export default function Cart({ item }) {
   const dispatchMinus = useDispatch();
   const dispatchTotal = useDispatch();
   const dispatchDelete = useDispatch();
-  // increase quantity of product
+
+  // Function to handle increasing the quantity of a product in the cart
   function handlePlus(item) {
     item.qty += 1;
     dispatchPlus(updateCart(item));
     dispatchTotal(CartItems());
   }
-  // decrease quantity of product
+
+  // Function to handle decreasing the quantity of a product in the cart
   function handleMinus(item) {
     if (item.qty > 1) {
       item.qty -= 1;
@@ -22,23 +24,25 @@ export default function Cart({ item }) {
       dispatchTotal(CartItems());
     }
   }
-  // delete product from cart
+
+  // Function to handle removing a product from the cart
   function handleCancel(item) {
     dispatchDelete(DeleteCart(item));
     dispatchTotal(CartItems());
   }
+
   return (
     <>
-      {/* items added to Cart  */}
+      {/* Items added to Cart */}
       <div className="d-flex container-sm p-1 bg-white  gap-5">
-        {/* left part  */}
+        {/* Left part */}
         <img
           src={item.thumbnail}
           alt="error"
-          id="card-image "
+          id="card-image"
           style={{ width: "50%", height: "17rem", objectFit: "cover" }}
         />
-        {/* right-part  */}
+        {/* Right part */}
         <div
           className="d-flex flex-column gap-2 justify-content-center"
           style={{ width: "50%" }}
@@ -65,7 +69,7 @@ export default function Cart({ item }) {
               onClick={() => handleMinus(item)}
             />
           </div>
-          <div className="align-self-end mt-5 ">
+          <div className="align-self-end mt-5">
             <button
               type="button"
               className="btn btn-outline-secondary"

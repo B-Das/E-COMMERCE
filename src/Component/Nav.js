@@ -10,6 +10,7 @@ export default function Nav() {
     backgroundImage: "linear-gradient(to right, #f47289, #9375b7)",
   });
 
+  // Update gradient background on mouse movement
   useEffect(() => {
     const handleMouseMove = (e) => {
       const mouseX = e.clientX;
@@ -27,6 +28,7 @@ export default function Nav() {
     };
   }, []);
 
+  // Styles for different elements
   const style = {
     navbarSection: {
       ...gradientStyle,
@@ -63,6 +65,7 @@ export default function Nav() {
     },
   };
 
+  // Event handlers for product buttons and hover effects
   const handleProductHover = (e) => {
     e.target.style.backgroundColor = "#ffffff";
     e.target.style.color = "#000000";
@@ -85,7 +88,10 @@ export default function Nav() {
 
   return (
     <div id="navbar-section" style={style.navbarSection}>
-      <nav className="navbar navbar-expand-lg p-4 align-items-center" style={style.nav}>
+      <nav
+        className="navbar navbar-expand-lg p-4 align-items-center"
+        style={style.nav}
+      >
         <div className="container-fluid">
           <div className="d-flex align-items-start">
             <div style={style.buttonContainer}>
